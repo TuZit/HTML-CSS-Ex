@@ -100,7 +100,7 @@ p {
   display: block;
 }
 .navbar-drop i {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin-left: 0.4rem;
 }
 
@@ -334,8 +334,8 @@ p {
   }
 
   .navbar,
-.subnav,
-.header__search {
+  .subnav,
+  .header__search {
     display: none;
   }
 
@@ -381,8 +381,8 @@ p {
   }
 
   .ticket-list,
-.place-item,
-.contact-content {
+  .place-item,
+  .contact-content {
     padding-left: 1.6rem;
     padding-right: 1.6rem;
   }
