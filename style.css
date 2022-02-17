@@ -78,11 +78,6 @@ p {
 .mobile-nav {
   display: none;
 }
-@media screen and (min-width: 600px) {
-  .mobile-nav {
-    display: none;
-  }
-}
 
 .mobile-nav__drop {
   display: none;
@@ -418,7 +413,6 @@ p {
 
   .mobile-nav__drop {
     background-color: #000;
-    display: none;
   }
   .mobile-nav__drop li {
     padding: 1.2rem 2rem;
