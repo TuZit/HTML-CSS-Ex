@@ -46,7 +46,6 @@
 
         <ul class="mobile-nav">
           <li class="mobile-nav__home">HOME</li>
-
           <li class="mobile-nav__button">
             <i class="fa-solid fa-bars"></i>
           </li>
@@ -237,12 +236,13 @@
       const mobileSubMenu = document.querySelector(".mobile-nav__drop");
 
       mobileBtn.addEventListener("click", () => {
-        mobileSubMenu.classList.toggle("show");
-      });
-
-      window.addEventListener("resize", () => {
-        if (window.innerWidth > 600) {
-          mobileSubMenu.classList.remove("show");
+        if (mobileSubMenu.className.indexOf("show") == -1) {
+          mobileSubMenu.className += " show";
+        } else {
+          mobileSubMenu.className = mobileSubMenu.className.replace(
+            " show",
+            ""
+          );
         }
       });
     </script>
