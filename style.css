@@ -39,7 +39,7 @@ p {
   color: #000;
 }
 
-#header {
+.header {
   background-color: #000;
   color: #fff;
   position: fixed;
@@ -61,8 +61,9 @@ p {
 }
 .navbar li {
   padding: 1.4rem 2.4rem;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .navbar li:hover {
   background-color: #ccc;
@@ -77,6 +78,11 @@ p {
 .mobile-nav {
   display: none;
 }
+@media screen and (min-width: 600px) {
+  .mobile-nav {
+    display: none;
+  }
+}
 
 .mobile-nav__drop {
   display: none;
@@ -85,11 +91,14 @@ p {
 .header__search {
   font-size: 1.6rem;
   padding: 1.4rem 2.4rem;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 .header__search:hover {
   background-color: #f44336;
+}
+.header__search i {
+  font-size: 1.4rem;
 }
 
 .navbar-drop {
@@ -100,22 +109,22 @@ p {
   display: block;
 }
 .navbar-drop i {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   margin-left: 0.4rem;
 }
 
 .subnav {
+  background-color: #fff;
   transition: all 0.5s ease;
   position: absolute;
-  background-color: #fff;
-  color: #000;
   top: 100%;
   left: 0;
   z-index: 10;
   display: none;
+  transition: all 0.3s ease;
 }
 
-#banner {
+.banner {
   background: url(./img/la.jpg) no-repeat center/cover;
   height: 110vh;
   position: relative;
@@ -124,24 +133,26 @@ p {
 .banner__content {
   position: absolute;
   left: 50%;
-  bottom: 0%;
+  bottom: -3%;
   transform: translate(-50%, -50%);
   color: #fff;
   text-align: center;
 }
-.banner__content h2 {
+
+.banner__title {
   font-size: 2.4rem;
   font-weight: normal;
   margin-bottom: 2rem;
 }
-.banner__content p {
+
+.banner__description {
   font-size: 1.6rem;
 }
 
 .content-section {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 6.4rem 0;
+  padding: 6.4rem 1.6rem;
 }
 
 .section-heading {
@@ -183,14 +194,15 @@ p {
 .member-items .member-name {
   font-size: 1.6rem;
 }
-.member-items img {
+
+.member-img {
   width: 60%;
   object-fit: cover;
   border: none;
   border-radius: 0.6rem;
 }
 
-#tour {
+.tour {
   background-color: #000;
   color: #fff;
 }
@@ -201,8 +213,6 @@ p {
   font-size: 1.6rem;
   border: 1px solid #ccc;
   margin-top: 3.2rem;
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
 }
 .ticket-list li {
   border-bottom: 1px solid #ccc;
@@ -226,17 +236,19 @@ p {
   margin-right: 1.6rem;
 }
 
-#place-list {
-  padding: 3.2rem 0;
+.place-list {
+  margin: 3.2rem 0;
+  padding-bottom: 1.6rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: nowrap;
+  gap: 1.6rem;
 }
 
 .place-item {
   flex-basis: 33.3333%;
-  padding: 0 0.8rem;
 }
 .place-item img {
   width: 100%;
@@ -258,16 +270,20 @@ p {
 }
 
 .contact-content {
-  margin-top: 4.2rem;
+  margin: 3.2rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   font-size: 1.8rem;
 }
 
 .contact-info {
   flex-basis: 50%;
+}
+.contact-info p {
+  margin: 0;
+  padding-bottom: 1rem;
 }
 .contact-info i {
   margin-right: 1.2rem;
@@ -275,6 +291,7 @@ p {
 
 .contact-form {
   flex-basis: 50%;
+  overflow: hidden;
 }
 .contact-form input {
   width: 100%;
@@ -297,50 +314,51 @@ p {
   gap: 1.6rem;
 }
 
-#map-section {
-  margin-top: 3rem;
-}
-#map-section img {
+.map-section img {
   width: 100%;
   object-fit: cover;
   object-position: center;
 }
 
-#footer {
+.footer {
   background-color: #f1f1f1;
   text-align: center;
   font-size: 1.6rem;
 }
 
-.footer__social p {
+.footer__social {
   opacity: 0.7;
 }
-.footer__social p a {
-  text-decoration: underline;
-}
 .footer__social a {
-  font-size: 2rem;
+  font-size: 2.4rem;
   margin: 0 0.2rem;
   color: #000;
   opacity: 0.7;
+  transition: all 0.3s ease;
 }
 .footer__social a:hover {
   opacity: 0.3;
 }
 
+.copyright {
+  font-size: 1.5rem;
+}
+.copyright a {
+  font-size: 1.5rem;
+  opacity: 1;
+  text-decoration: underline;
+  color: #000;
+}
+
 @media screen and (max-width: 600px) {
-  #header {
+  .header {
     display: block;
   }
 
   .navbar,
-  .subnav,
-  .header__search {
+.subnav,
+.header__search {
     display: none;
-  }
-
-  .header {
-    display: block;
   }
 
   .mobile-nav {
@@ -351,45 +369,47 @@ p {
     align-items: center;
   }
   .mobile-nav li {
-    padding: 1.2rem 2rem;
-    font-size: 1.6rem;
+    padding: 1.4625rem 2.4rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
   .mobile-nav li:hover {
     background-color: #ccc;
     color: #000;
   }
 
-  #banner {
-    height: 40vh;
+  .banner {
+    height: 41.5vh;
   }
-  #banner .banner__content {
+  .banner .banner__content {
     display: none;
   }
 
-  #band {
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
+  .about-text {
+    font-size: 1.5rem;
+  }
+
+  .member-list {
+    gap: 1.6rem;
   }
 
   .member-items {
     flex-basis: 100%;
   }
 
-  .place-item {
-    flex-basis: 100%;
+  .place-list {
+    flex-wrap: wrap;
   }
 
-  .ticket-list,
-  .place-item,
-  .contact-content {
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
+  .place-item {
+    flex-basis: 100%;
+    padding-bottom: 1.6rem;
   }
 
   .contact-content {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .contact-details {
@@ -405,10 +425,25 @@ p {
     font-size: 1.6rem;
     width: 100%;
     cursor: pointer;
+    transition: all 0.3s ease;
   }
   .mobile-nav__drop li:hover {
     background-color: #ccc;
     color: #000;
+  }
+
+  .ticket-list {
+    margin: 0;
+  }
+
+  .contact-form {
+    margin-top: 1rem;
+  }
+}
+@media screen and (max-width: 831px) and (min-width: 601px) {
+  .content-section {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
   }
 }
 

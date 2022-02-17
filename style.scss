@@ -31,14 +31,18 @@ p {
   align-items: $align;
 }
 
+@mixin black-bgc {
+  background-color: #000;
+  color: #fff;
+}
+
 // show
 .show {
   display: block !important;
 }
 
 .btn {
-  background-color: #000;
-  color: #fff;
+  @include black-bgc;
   padding: 0.8rem 1.6rem;
   display: inline-block;
   transition: all 0.3s ease;
@@ -50,9 +54,8 @@ p {
 }
 
 // header
-#header {
-  background-color: #000;
-  color: #fff;
+.header {
+  @include black-bgc;
   position: fixed;
   top: 0;
   left: 0;
@@ -68,8 +71,9 @@ p {
 
   li {
     padding: 1.4rem 2.4rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: all 0.3s ease;
 
     &:hover {
       a {
@@ -85,6 +89,9 @@ p {
 }
 .mobile-nav {
   display: none;
+  @media screen and (min-width: 600px) {
+    display: none;
+  }
 }
 .mobile-nav__drop {
   display: none;
@@ -93,11 +100,15 @@ p {
 .header__search {
   font-size: 1.6rem;
   padding: 1.4rem 2.4rem;
-  transition: all 0.3s ease;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: #f44336;
+  }
+
+  i {
+    font-size: 1.4rem;
   }
 }
 .navbar-drop {
@@ -109,23 +120,23 @@ p {
   }
 
   i {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-left: 0.4rem;
   }
 }
 .subnav {
+  background-color: #fff;
   transition: all 0.5s ease;
   position: absolute;
-  background-color: #fff;
-  color: #000;
   top: 100%;
   left: 0;
   z-index: 10;
   display: none;
+  transition: all 0.3s ease;
 }
 
 // Banner
-#banner {
+.banner {
   background: url(./img/la.jpg) no-repeat center/cover;
   height: 110vh;
   position: relative;
@@ -134,27 +145,25 @@ p {
 .banner__content {
   position: absolute;
   left: 50%;
-  bottom: 0%;
+  bottom: -3%;
   transform: translate(-50%, -50%);
   color: #fff;
   text-align: center;
-
-  h2 {
-    font-size: 2.4rem;
-    font-weight: normal;
-    margin-bottom: 2rem;
-  }
-
-  p {
-    font-size: 1.6rem;
-  }
+}
+.banner__title {
+  font-size: 2.4rem;
+  font-weight: normal;
+  margin-bottom: 2rem;
+}
+.banner__description {
+  font-size: 1.6rem;
 }
 
 // section
 .content-section {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 6.4rem 0;
+  padding: 6.4rem 1.6rem;
 }
 
 .section-heading {
@@ -194,19 +203,17 @@ p {
   .member-name {
     font-size: 1.6rem;
   }
-
-  img {
-    width: 60%;
-    object-fit: cover;
-    border: none;
-    border-radius: 0.6rem;
-  }
+}
+.member-img {
+  width: 60%;
+  object-fit: cover;
+  border: none;
+  border-radius: 0.6rem;
 }
 
 // Tour
-#tour {
-  background-color: #000;
-  color: #fff;
+.tour {
+  @include black-bgc;
 }
 
 .ticket-list {
@@ -215,8 +222,6 @@ p {
   font-size: 1.6rem;
   border: 1px solid #ccc;
   margin-top: 3.2rem;
-  margin-left: 0.8rem;
-  margin-right: 0.8rem;
 
   li {
     border-bottom: 1px solid #ccc;
@@ -233,8 +238,7 @@ p {
   }
 
   .quantity {
-    background-color: #000;
-    color: #fff;
+    @include black-bgc;
     padding: 0.2rem 0.8rem;
     border-radius: 50%;
     line-height: 1;
@@ -244,14 +248,17 @@ p {
 }
 
 // Place
-#place-list {
-  padding: 3.2rem 0;
+.place-list {
+  margin: 3.2rem 0;
+  padding-bottom: 1.6rem;
   @include flex(space-around, center);
+  flex-wrap: nowrap;
+  gap: 1.6rem;
 }
 
 .place-item {
   flex-basis: 33.3333%;
-  padding: 0 0.8rem;
+
   img {
     width: 100%;
   }
@@ -272,12 +279,16 @@ p {
 
 // contact
 .contact-content {
-  margin-top: 4.2rem;
-  @include flex(space-between, center);
+  margin: 3.2rem 0;
+  @include flex(space-between, flex-start);
   font-size: 1.8rem;
 }
 .contact-info {
   flex-basis: 50%;
+  p {
+    margin: 0;
+    padding-bottom: 1rem;
+  }
 
   i {
     margin-right: 1.2rem;
@@ -285,6 +296,7 @@ p {
 }
 .contact-form {
   flex-basis: 50%;
+  overflow: hidden;
   input {
     width: 100%;
     padding: 0.8rem;
@@ -306,8 +318,7 @@ p {
 }
 
 //Map
-#map-section {
-  margin-top: 3rem;
+.map-section {
   img {
     width: 100%;
     object-fit: cover;
@@ -316,35 +327,39 @@ p {
 }
 
 // Footer
-#footer {
+.footer {
   background-color: #f1f1f1;
   text-align: center;
   font-size: 1.6rem;
 }
 
 .footer__social {
-  p {
-    opacity: 0.7;
-    a {
-      text-decoration: underline;
-    }
-  }
-
+  opacity: 0.7;
   a {
-    font-size: 2rem;
+    font-size: 2.4rem;
     margin: 0 0.2rem;
     color: #000;
     opacity: 0.7;
+    transition: all 0.3s ease;
 
     &:hover {
       opacity: 0.3;
     }
   }
 }
+.copyright {
+  font-size: 1.5rem;
+  a {
+    font-size: 1.5rem;
+    opacity: 1;
+    text-decoration: underline;
+    color: #000;
+  }
+}
 
 // Responsive
 @media screen and (max-width: 600px) {
-  #header {
+  .header {
     display: block;
   }
   .navbar,
@@ -353,17 +368,14 @@ p {
     display: none;
   }
 
-  .header {
-    display: block;
-  }
-
   .mobile-nav {
     width: 100%;
     @include flex(space-between, center);
     li {
-      padding: 1.2rem 2rem;
-      font-size: 1.6rem;
+      padding: 1.4625rem 2.4rem;
+      font-size: 1.5rem;
       cursor: pointer;
+      transition: all 0.3s ease;
 
       &:hover {
         background-color: #ccc;
@@ -372,36 +384,34 @@ p {
     }
   }
 
-  #banner {
-    height: 40vh;
+  .banner {
+    height: 41.5vh;
 
     .banner__content {
       display: none;
     }
   }
 
-  #band {
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
+  .about-text {
+    font-size: 1.5rem;
   }
-
+  .member-list {
+    gap: 1.6rem;
+  }
   .member-items {
     flex-basis: 100%;
   }
-
+  .place-list {
+    flex-wrap: wrap;
+  }
   .place-item {
     flex-basis: 100%;
+    padding-bottom: 1.6rem;
   }
 
-  .ticket-list,
-  .place-item,
-  .contact-content {
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
-  }
   .contact-content {
     display: block;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
   .contact-details {
@@ -417,11 +427,26 @@ p {
       font-size: 1.6rem;
       width: 100%;
       cursor: pointer;
+      transition: all 0.3s ease;
 
       &:hover {
         background-color: #ccc;
         color: #000;
       }
     }
+  }
+
+  .ticket-list {
+    margin: 0;
+  }
+  .contact-form {
+    margin-top: 1rem;
+  }
+}
+
+@media screen and (max-width: 831px) and (min-width: 601px) {
+  .content-section {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
   }
 }
